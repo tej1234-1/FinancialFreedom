@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Education</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        header {
+            background-color: #4caf50;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4caf50;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #4caf50;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer a {
+            color: #c8e6c9;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .calculator {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .calculator label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .calculator input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .calculator button {
+            background-color: #4caf50;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .calculator button:hover {
+            background-color: #388e3c;
+        }
+
+        .calculator .result {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Financial Education</h1>
+    </header>
+
+    <nav>
+        <a href="#glossary">Glossary of Financial Terms</a>
+        <a href="#personal-finance">Personal Finance Basics</a>
+        <a href="#resources">Books and Resources</a>
+    </nav>
+
+    <main>
+        <section id="glossary">
+            <h2>Glossary of Financial Terms</h2>
+            <p>Understand commonly used financial terms to build a solid foundation in finance:</p>
+            <ul>
+                <li><strong>Budget:</strong> A plan for managing income and expenses.</li>
+                <li><strong>Interest:</strong> The cost of borrowing money or the return on savings.</li>
+                <li><strong>Asset:</strong> Something of value owned by an individual or business.</li>
+                <li><strong>Liability:</strong> A financial obligation or debt.</li>
+            </ul>
+        </section>
+
+        <section id="personal-finance" class="calculator">
+            <h2>Personal Finance Basics</h2>
+            <p>Explore articles, videos, and courses designed for beginners:</p>
+            <ul>
+                <li><a href="#">Understanding Budgeting</a></li>
+                <li><a href="#">How to Save Effectively</a></li>
+                <li><a href="#">Basics of Investing</a></li>
+            </ul>
+            
+            <h3>Financial Goal Calculator</h3>
+            <form onsubmit="calculateGoal(event)">
+                <label for="goal-amount">Goal Amount ($):</label>
+                <input type="number" id="goal-amount" required>
+
+                <label for="monthly-saving">Monthly Saving ($):</label>
+                <input type="number" id="monthly-saving" required>
+
+                <button type="submit">Calculate</button>
+                <div class="result" id="goal-result"></div>
+            </form>
+        </section>
+
+        <section id="resources">
+            <h2>Books and Resources</h2>
+            <p>Recommended readings for financial literacy:</p>
+            <ul>
+                <li><em>Rich Dad Poor Dad</em> by Robert Kiyosaki</li>
+                <li><em>The Total Money Makeover</em> by Dave Ramsey</li>
+                <li><em>Your Money or Your Life</em> by Vicki Robin</li>
+                <li><em>The Intelligent Investor</em> by Benjamin Graham</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Financial Education | <a href="#glossary">Glossary</a> | <a href="#personal-finance">Personal Finance</a> | <a href="#resources">Resources</a></p>
+    </footer>
+
+    <script>
+        function calculateGoal(event) {
+            event.preventDefault();
+
+            const goalAmount = parseFloat(document.getElementById('goal-amount').value);
+            const monthlySaving = parseFloat(document.getElementById('monthly-saving').value);
+
+            if (!isNaN(goalAmount) && !isNaN(monthlySaving) && monthlySaving > 0) {
+                const months = Math.ceil(goalAmount / monthlySaving);
+                document.getElementById('goal-result').textContent = `It will take approximately ${months} months to reach your goal.`;
+            } else {
+                document.getElementById('goal-result').textContent = 'Please enter valid numbers.';
+            }
+        }
+    </script>
+</body>
+</html>

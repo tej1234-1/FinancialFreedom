@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Tools and Resources</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        header {
+            background-color: #4caf50;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4caf50;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #4caf50;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer a {
+            color: #c8e6c9;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .calculator {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .calculator label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .calculator input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .calculator button {
+            background-color: #4caf50;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .calculator button:hover {
+            background-color: #388e3c;
+        }
+
+        .calculator .result {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Financial Tools and Resources</h1>
+    </header>
+
+    <nav>
+        <a href="#calculators">Calculators</a>
+        <a href="#spreadsheets">Spreadsheets & Templates</a>
+    </nav>
+
+    <main>
+        <section id="calculators" class="calculator">
+            <h2>Calculators</h2>
+            <p>Use the calculators below to manage your finances:</p>
+
+            <h3>Loan Calculator</h3>
+            <form onsubmit="calculateLoan(event)">
+                <label for="loan-amount">Loan Amount ($):</label>
+                <input type="number" id="loan-amount" required>
+
+                <label for="loan-rate">Annual Interest Rate (%):</label>
+                <input type="number" id="loan-rate" step="0.01" required>
+
+                <label for="loan-term">Loan Term (Years):</label>
+                <input type="number" id="loan-term" required>
+
+                <button type="submit">Calculate</button>
+                <div class="result" id="loan-result"></div>
+            </form>
+        </section>
+
+        <section id="spreadsheets">
+            <h2>Spreadsheets and Templates</h2>
+            <p>Download helpful tools for managing your finances:</p>
+            <ul>
+                <li><a href="#">Monthly Budget Tracker</a></li>
+                <li><a href="#">Debt Payment Schedule</a></li>
+                <li><a href="#">Investment Portfolio Tracker</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Financial Tools and Resources | <a href="#calculators">Calculators</a> | <a href="#spreadsheets">Spreadsheets</a></p>
+    </footer>
+
+    <script>
+        function calculateLoan(event) {
+            event.preventDefault();
+
+            const loanAmount = parseFloat(document.getElementById('loan-amount').value);
+            const loanRate = parseFloat(document.getElementById('loan-rate').value) / 100 / 12;
+            const loanTerm = parseInt(document.getElementById('loan-term').value) * 12;
+
+            if (!isNaN(loanAmount) && !isNaN(loanRate) && loanTerm > 0) {
+                const monthlyPayment = (loanAmount * loanRate) / (1 - Math.pow(1 + loanRate, -loanTerm));
+                document.getElementById('loan-result').textContent = `Your monthly payment is $${monthlyPayment.toFixed(2)}.`;
+            } else {
+                document.getElementById('loan-result').textContent = 'Please enter valid numbers.';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Financial Preparedness</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        header {
+            background-color: #ff5722;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #ff5722;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #ff5722;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #ff5722;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer a {
+            color: #ffe0b2;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .calculator {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .calculator label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .calculator input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .calculator button {
+            background-color: #ff5722;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .calculator button:hover {
+            background-color: #e64a19;
+        }
+
+        .calculator .result {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Emergency Financial Preparedness</h1>
+    </header>
+
+    <nav>
+        <a href="#emergency-fund">Building an Emergency Fund</a>
+        <a href="#unforeseen-events">Planning for Unforeseen Events</a>
+    </nav>
+
+    <main>
+        <section id="emergency-fund">
+            <h2>Building an Emergency Fund</h2>
+            <p>An emergency fund is your financial safety net for unexpected situations. Here's how to build one:</p>
+            <ul>
+                <li><strong>How Much to Save:</strong> Aim to save at least 3-6 months' worth of living expenses.</li>
+                <li><strong>Where to Keep It:</strong> Store your emergency fund in a high-yield savings account for easy access and minimal risk.</li>
+                <li><strong>Start Small:</strong> Begin by saving a manageable amount monthly and increase over time.</li>
+            </ul>
+        </section>
+
+        <section class="calculator">
+            <h2>Emergency Fund Calculator</h2>
+            <form onsubmit="calculateFund(event)">
+                <label for="monthly-expenses">Monthly Living Expenses ($):</label>
+                <input type="number" id="monthly-expenses" required>
+
+                <label for="months">Number of Months to Save For:</label>
+                <input type="number" id="months" required>
+
+                <button type="submit">Calculate</button>
+                <div class="result" id="result"></div>
+            </form>
+        </section>
+
+        <section id="unforeseen-events">
+            <h2>Planning for Unforeseen Events</h2>
+            <p>Prepare financially for unexpected events like layoffs, medical emergencies, or natural disasters:</p>
+            <ul>
+                <li><strong>Budget Adjustments:</strong> Identify non-essential expenses that can be reduced or eliminated temporarily.</li>
+                <li><strong>Insurance Coverage:</strong> Ensure you have adequate health, life, and property insurance to minimize financial impact.</li>
+                <li><strong>Emergency Contacts:</strong> Maintain a list of resources like financial advisors or community support organizations.</li>
+                <li><strong>Side Income:</strong> Explore opportunities for generating additional income during difficult times.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Emergency Financial Preparedness | <a href="#emergency-fund">Emergency Fund</a> | <a href="#unforeseen-events">Unforeseen Events</a></p>
+    </footer>
+
+    <script>
+        function calculateFund(event) {
+            event.preventDefault();
+
+            const monthlyExpenses = parseFloat(document.getElementById('monthly-expenses').value);
+            const months = parseInt(document.getElementById('months').value);
+
+            if (!isNaN(monthlyExpenses) && !isNaN(months)) {
+                const total = monthlyExpenses * months;
+                document.getElementById('result').textContent = `You need to save $${total.toFixed(2)} for ${months} months of expenses.`;
+            } else {
+                document.getElementById('result').textContent = 'Please enter valid numbers.';
+            }
+        }
+    </script>
+</body>
+</html>

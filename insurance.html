@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Planning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .calculator-input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .calculate-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .calculate-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #e3f2fd;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #007BFF;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Insurance Planning</h1>
+    </header>
+
+    <nav>
+        <a href="#types-of-insurance">Types of Insurance</a>
+        <a href="#coverage-calculator">Coverage Calculator</a>
+    </nav>
+
+    <main>
+        <section id="types-of-insurance">
+            <h2>Types of Insurance</h2>
+            <p>Understanding the various types of insurance can help you choose the right coverage:</p>
+            <ul>
+                <li><strong>Health Insurance:</strong> Covers medical expenses and hospitalization costs.</li>
+                <li><strong>Life Insurance:</strong> Provides financial support to your dependents in case of your demise.</li>
+                <li><strong>Auto Insurance:</strong> Protects against damages or theft of your vehicle.</li>
+                <li><strong>Home Insurance:</strong> Covers damages to your property and belongings.</li>
+                <li><strong>Disability Insurance:</strong> Replaces a portion of your income if you become unable to work.</li>
+            </ul>
+        </section>
+
+        <section id="coverage-calculator">
+            <h2>How Much Coverage Do You Need?</h2>
+            <p>Use this calculator to estimate your insurance coverage needs:</p>
+            <form id="calculator-form">
+                <label for="annual-income">Annual Income (₹):</label>
+                <input type="number" id="annual-income" class="calculator-input" placeholder="Enter your annual income" required>
+
+                <label for="current-savings">Current Savings (₹):</label>
+                <input type="number" id="current-savings" class="calculator-input" placeholder="Enter your current savings" required>
+
+                <label for="expenses">Annual Expenses (₹):</label>
+                <input type="number" id="expenses" class="calculator-input" placeholder="Enter your annual expenses" required>
+
+                <label for="years-of-support">Years of Financial Support Needed:</label>
+                <input type="number" id="years-of-support" class="calculator-input" placeholder="Enter the number of years" required>
+
+                <button type="button" class="calculate-btn" onclick="calculateCoverage()">Calculate</button>
+            </form>
+
+            <div id="result" class="result" style="display: none;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Insurance Planning Guide | <a href="#types-of-insurance">Types of Insurance</a> | <a href="#coverage-calculator">Coverage Calculator</a></p>
+    </footer>
+
+    <script>
+        function calculateCoverage() {
+            const annualIncome = parseFloat(document.getElementById('annual-income').value);
+            const currentSavings = parseFloat(document.getElementById('current-savings').value);
+            const expenses = parseFloat(document.getElementById('expenses').value);
+            const yearsOfSupport = parseFloat(document.getElementById('years-of-support').value);
+
+            if (isNaN(annualIncome) || isNaN(currentSavings) || isNaN(expenses) || isNaN(yearsOfSupport)) {
+                alert('Please fill out all fields with valid numbers.');
+                return;
+            }
+
+            const coverageNeeded = (expenses * yearsOfSupport) - currentSavings;
+
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerText = coverageNeeded > 0 
+                ? `You need an estimated insurance coverage of ₹${coverageNeeded.toFixed(2)}.` 
+                : 'Your current savings are sufficient to cover your estimated needs.';
+        }
+    </script>
+</body>
+</html>

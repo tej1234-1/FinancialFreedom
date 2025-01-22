@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Goals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .calculator-input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .calculate-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .calculate-btn:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #e7f9f0;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Financial Goals</h1>
+    </header>
+
+    <nav>
+        <a href="#smart-goals">SMART Goals</a>
+        <a href="#milestones">Milestones</a>
+        <a href="#goal-calculator">Goal Calculator</a>
+    </nav>
+
+    <main>
+        <section id="smart-goals">
+            <h2>Setting SMART Goals</h2>
+            <p>Learn how to set Specific, Measurable, Achievable, Relevant, and Time-bound financial goals:</p>
+            <ul>
+                <li><strong>Specific:</strong> Define your goal clearly. For example, "Save ₹5,00,000 for a car."</li>
+                <li><strong>Measurable:</strong> Track your progress regularly.</li>
+                <li><strong>Achievable:</strong> Ensure your goal is realistic given your current financial situation.</li>
+                <li><strong>Relevant:</strong> Align your goal with your overall financial plan.</li>
+                <li><strong>Time-bound:</strong> Set a deadline to achieve your goal.</li>
+            </ul>
+        </section>
+
+        <section id="milestones">
+            <h2>Milestones</h2>
+            <p>Break down your financial goals into manageable milestones:</p>
+            <ul>
+                <li><strong>Short-term:</strong> Save for a gadget or pay off a small debt.</li>
+                <li><strong>Long-term:</strong> Plan for a house purchase or higher education.</li>
+            </ul>
+        </section>
+
+        <section id="goal-calculator">
+            <h2>Financial Goal Calculator</h2>
+            <p>Use this calculator to estimate how long it will take to reach your financial goals:</p>
+            <form id="calculator-form">
+                <label for="goal-amount">Goal Amount (₹):</label>
+                <input type="number" id="goal-amount" class="calculator-input" placeholder="Enter your goal amount" required>
+
+                <label for="current-savings">Current Savings (₹):</label>
+                <input type="number" id="current-savings" class="calculator-input" placeholder="Enter your current savings" required>
+
+                <label for="monthly-savings">Monthly Savings (₹):</label>
+                <input type="number" id="monthly-savings" class="calculator-input" placeholder="Enter your monthly savings" required>
+
+                <label for="interest-rate">Expected Annual Interest Rate (%):</label>
+                <input type="number" id="interest-rate" class="calculator-input" placeholder="Enter the annual interest rate" required>
+
+                <button type="button" class="calculate-btn" onclick="calculateGoalTime()">Calculate</button>
+            </form>
+
+            <div id="result" class="result" style="display: none;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Financial Goals Planner | <a href="#smart-goals">SMART Goals</a> | <a href="#milestones">Milestones</a> | <a href="#goal-calculator">Calculator</a></p>
+    </footer>
+
+    <script>
+        function calculateGoalTime() {
+            const goalAmount = parseFloat(document.getElementById('goal-amount').value);
+            const currentSavings = parseFloat(document.getElementById('current-savings').value);
+            const monthlySavings = parseFloat(document.getElementById('monthly-savings').value);
+            const interestRate = parseFloat(document.getElementById('interest-rate').value) / 100;
+
+            if (isNaN(goalAmount) || isNaN(currentSavings) || isNaN(monthlySavings) || isNaN(interestRate)) {
+                alert('Please fill out all fields with valid numbers.');
+                return;
+            }
+
+            let months = 0;
+            let savings = currentSavings;
+
+            while (savings < goalAmount) {
+                savings += monthlySavings;
+                savings += (savings * (interestRate / 12));
+                months++;
+            }
+
+            const years = Math.floor(months / 12);
+            const remainingMonths = months % 12;
+
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerText = `You will reach your goal in ${years} years and ${remainingMonths} months.`;
+        }
+    </script>
+</body>
+</html>

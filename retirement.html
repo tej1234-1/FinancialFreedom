@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning for Retirement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #0056b3;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .calculator-input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .calculate-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .calculate-btn:hover {
+            background-color: #004494;
+        }
+
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #e7f3ff;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Planning for Retirement</h1>
+    </header>
+
+    <nav>
+        <a href="#retirement-accounts">Retirement Accounts</a>
+        <a href="#retirement-expenses">Estimating Expenses</a>
+        <a href="#retirement-savings">Retirement Savings</a>
+    </nav>
+
+    <main>
+        <section id="retirement-accounts">
+            <h2>Understanding Retirement Accounts</h2>
+            <p>Retirement accounts are crucial for long-term financial security. Here are some common types:</p>
+            <ul>
+                <li><strong>401(k):</strong> Employer-sponsored plans offering tax benefits for retirement savings.</li>
+                <li><strong>IRA:</strong> Individual Retirement Accounts, including traditional and Roth IRAs, provide tax advantages.</li>
+                <li><strong>EPF:</strong> Employee Provident Fund is a government-managed retirement savings scheme.</li>
+            </ul>
+        </section>
+
+        <section id="retirement-expenses">
+            <h2>Estimating Retirement Expenses</h2>
+            <p>It's essential to estimate your future expenses to plan adequately for retirement. Consider the following:</p>
+            <ul>
+                <li><span class="highlight">Housing:</span> Will you own a home outright, or will you have rent/mortgage payments?</li>
+                <li><span class="highlight">Healthcare:</span> Account for medical expenses, including insurance premiums.</li>
+                <li><span class="highlight">Lifestyle:</span> Factor in travel, hobbies, and other discretionary expenses.</li>
+            </ul>
+        </section>
+
+        <section id="retirement-savings">
+            <h2>Retirement Age and Savings</h2>
+            <p>Calculate how much you need to save for a comfortable retirement:</p>
+            <ul>
+                <li><strong>Start Early:</strong> The earlier you start, the more time your investments have to grow.</li>
+                <li><strong>Use the 4% Rule:</strong> Estimate that you'll withdraw 4% of your savings annually in retirement.</li>
+                <li><strong>Diversify Investments:</strong> Invest in a mix of stocks, bonds, and other assets to balance risk and return.</li>
+            </ul>
+        </section>
+
+        <section id="retirement-calculator">
+            <h2>Retirement Calculator</h2>
+            <p>Use this calculator to estimate your retirement savings needs:</p>
+            <form id="calculator-form">
+                <label for="current-age">Current Age:</label>
+                <input type="number" id="current-age" class="calculator-input" placeholder="Enter your current age" required>
+
+                <label for="retirement-age">Desired Retirement Age:</label>
+                <input type="number" id="retirement-age" class="calculator-input" placeholder="Enter your desired retirement age" required>
+
+                <label for="current-savings">Current Savings (₹):</label>
+                <input type="number" id="current-savings" class="calculator-input" placeholder="Enter your current savings" required>
+
+                <label for="monthly-contribution">Monthly Contribution (₹):</label>
+                <input type="number" id="monthly-contribution" class="calculator-input" placeholder="Enter your monthly contribution" required>
+
+                <label for="expected-return">Expected Annual Return (%):</label>
+                <input type="number" id="expected-return" class="calculator-input" placeholder="Enter the expected annual return" required>
+
+                <button type="button" class="calculate-btn" onclick="calculateRetirement()">Calculate</button>
+            </form>
+
+            <div id="result" class="result" style="display: none;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Retirement Planning Guide</p>
+    </footer>
+
+    <script>
+        function calculateRetirement() {
+            const currentAge = parseFloat(document.getElementById('current-age').value);
+            const retirementAge = parseFloat(document.getElementById('retirement-age').value);
+            const currentSavings = parseFloat(document.getElementById('current-savings').value);
+            const monthlyContribution = parseFloat(document.getElementById('monthly-contribution').value);
+            const expectedReturn = parseFloat(document.getElementById('expected-return').value) / 100;
+
+            if (isNaN(currentAge) || isNaN(retirementAge) || isNaN(currentSavings) || isNaN(monthlyContribution) || isNaN(expectedReturn)) {
+                alert('Please fill out all fields with valid numbers.');
+                return;
+            }
+
+            const yearsToRetirement = retirementAge - currentAge;
+            const monthsToRetirement = yearsToRetirement * 12;
+            const monthlyRate = expectedReturn / 12;
+
+            let futureSavings = currentSavings * Math.pow(1 + monthlyRate, monthsToRetirement);
+            for (let i = 0; i < monthsToRetirement; i++) {
+                futureSavings += monthlyContribution * Math.pow(1 + monthlyRate, monthsToRetirement - i);
+            }
+
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerText = `Estimated Retirement Savings: ₹${futureSavings.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

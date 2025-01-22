@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Budget Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 1rem 0 0.5rem;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #f1f1f1;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Monthly Budget Calculator</h1>
+    </header>
+
+    <main>
+        <h1>Calculate Your Budget</h1>
+        <form id="budget-form">
+            <label for="income">Monthly Income (₹):</label>
+            <input type="number" id="income" placeholder="Enter your income" required>
+
+            <label for="needs">Needs (50%) (₹):</label>
+            <input type="number" id="needs" readonly>
+
+            <label for="wants">Wants (30%) (₹):</label>
+            <input type="number" id="wants" readonly>
+
+            <label for="savings">Savings (20%) (₹):</label>
+            <input type="number" id="savings" readonly>
+
+            <button type="button" onclick="calculateBudget()">Calculate</button>
+        </form>
+
+        <div id="result" class="result" style="display: none;"></div>
+    </main>
+
+    <script>
+        function calculateBudget() {
+            const income = parseFloat(document.getElementById('income').value);
+
+            if (isNaN(income) || income <= 0) {
+                alert('Please enter a valid income.');
+                return;
+            }
+
+            const needs = (income * 0.5).toFixed(2);
+            const wants = (income * 0.3).toFixed(2);
+            const savings = (income * 0.2).toFixed(2);
+
+            document.getElementById('needs').value = needs;
+            document.getElementById('wants').value = wants;
+            document.getElementById('savings').value = savings;
+
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerText = `Budget Breakdown: Needs: $${needs}, Wants: $${wants}, Savings: $${savings}`;
+        }
+    </script>
+</body>
+</html>
