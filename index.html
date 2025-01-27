@@ -1,96 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Path to Financial Freedom</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .hero {
-      position: relative;
-      text-align: center;
-      color: white;
-      padding: 50px 20px;
-      background: url('financial_planning') no-repeat center center/cover;
-      height: 60vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOUR PATH TO FINANCIAL FREEDOM</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            color: #fff;
+            background-color: #f4ecd8;
+        }
 
-    .hero-content {
-      background-color: rgba(0, 0, 0, 0.6);
-      /* Semi-transparent background */
-      padding: 20px;
-      border-radius: 10px;
-    }
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #000 url('financial_planning.jpg') no-repeat center/cover;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .cta-btn {
-      margin-top: 15px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
 
-    .cta-btn:hover {
-      background-color: #45a049;
-    }
-  </style>
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: left;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1.2;
+            font-weight: bold;
+        }
+
+        .hero-description {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .cta-btn {
+            margin-top: 1.5rem;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000;
+            background-color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background-color: #e3e3e3;
+        }
+
+        .sections {
+            padding: 40px;
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+        }
+
+        .sections h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .sections ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sections li {
+            margin: 10px 0;
+        }
+
+        .sections a {
+            color: #4caf50;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .sections a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 3;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+        }
+
+        .navbar .search {
+            border: 1px solid #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: none;
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #000;
+            color: #fff;
+            margin-top: 40px;
+        }
+
+        .description-section {
+            padding: 40px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .description-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .description-section p {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Navigation Bar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">Your Path to Financial Freedom</div>
-      <div class="search-bar">
-        <input type="text" placeholder="Search...">
-        <button>🔍</button>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero" style="background-image: url('hero2.jpg');">
-    <div class="hero-content">
-
-      <h1>Try Our Free Budget Planner</h1>
-      <p>Take control of your household spending and see where your money is going.</p>
-      <button class="cta-btn">Start Budget Planner</button>
+    <div class="navbar">
+        <div class="logo">tej</div>
+        <div class="links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <input type="text" class="search" placeholder="Search...">
     </div>
-  </section>
 
-  <!-- Sections List -->
-  <section class="sections">
-    <h2>Explore Financial Topics</h2>
-    <ul>
-      <li><a href="budgeting.html">Budgeting and Expense Management</a></li>
-      <li><a href="savings.html">Savings and Investments</a></li>
-      <li><a href="retirement.html">Retirement Planning</a></li>
-      <li><a href="debt.html">Debt Management</a></li>
-      <li><a href="tax.html">Tax Planning</a></li>
-      <li><a href="goals.html">Financial Goals</a></li>
-      <li><a href="insurance.html">Insurance Planning</a></li>
-      <li><a href="emergency.html">Emergency Financial Preparedness</a></li>
-      <li><a href="education.html">Financial Education</a></li>
-      <li><a href="tools.html">Financial Tools and Resources</a></li>
-      <li><a href="groups.html">Financial Planning for Specific Groups</a></li>
-      <li><a href="news.html">Financial News and Updates</a></li>
-      <li><a href="sustainable.html">Sustainable and Ethical Investing</a></li>
-      <li><a href="advanced.html">Advanced Financial Planning</a></li>
-    </ul>
-  </section>
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">NOW START YOUR OWN BUDGETING</h1>
+            <p class="hero-description">
+This platform helps users plan budgets tailored for students or retiring officers, offering tools to manage their finances effectively. It provides guidance on expenses, savings, and investments to ensure financial security during student life or retirement. Users can customize plans based on their goals and lifestyle preferences.
+            </p>
+            <a href="#" class="cta-btn">Start Budget Planner</a>
+        </div>
+    </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; @tej</p>
-  </footer>
+    <section class="sections">
+        <h2>Explore Financial Topics</h2>
+        <ul>
+            <li><a href="budgeting.html">Budgeting and Expense Management</a></li>
+            <li><a href="savings.html">Savings and Investments</a></li>
+            <li><a href="retirement.html">Retirement Planning</a></li>
+            <li><a href="debt.html">Debt Management</a></li>
+            <li><a href="tax.html">Tax Planning</a></li>
+            <li><a href="goals.html">Financial Goals</a></li>
+            <li><a href="insurance.html">Insurance Planning</a></li>
+            <li><a href="emergency.html">Emergency Financial Preparedness</a></li>
+            <li><a href="education.html">Financial Education</a></li>
+            <li><a href="tools.html">Financial Tools and Resources</a></li>
+            <li><a href="groups.html">Financial Planning for Specific Groups</a></li>
+            <li><a href="news.html">Financial News and Updates</a></li>
+            <li><a href="sustainable.html">Sustainable and Ethical Investing</a></li>
+            <li><a href="advanced.html">Advanced Financial Planning</a></li>
+        </ul>
+    </section>
+
+    <section id="home" class="description-section">
+        <h2>Home</h2>
+        <p>
+          
+Welcome to Your Budget Planner
+Take control of your finances and plan for a secure future with ease. Whether you're a student balancing expenses or a retiring officer preparing for life’s next chapter, our platform is designed to help you achieve your financial goals.  
+
+For Students: Create smart budgets to manage your expenses and savings while focusing on your education.  
+For Retiring Officer: Plan your retirement with confidence by tracking expenses, planning investments, and securing a stable financial future.  
+
+Get started today and pave the way for a worry-free tomorrow!
+        </p>
+    </section>
+
+    <section id="about" class="description-section">
+        <h2>About</h2>
+        <p>
+            Welcome to our platform, your trusted companion for financial planning. Whether you’re a student managing limited resources or a retiring officer preparing for a secure future, we provide the tools and guidance you need to create personalized budgets. Our mission is to empower users to make informed financial decisions, ensuring stability and peace of mind in every phase of life. From tracking expenses to planning long-term investments, we’re here to help you achieve your financial goals with confidence.
+        </p>
+    </section>
+    
+    <section id="contact" class="description-section">
+        <h2>Contact</h2>
+        <p>
+            Have questions or need assistance? Reach out to us, and our team will be happy to help you.
+            EMAIL:tejmurari@gmail.com
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; @tej</p>
+    </footer>
 </body>
-
 </html>
