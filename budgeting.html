@@ -6,46 +6,65 @@
     <title>Budgeting and Expense Management</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
         }
 
         header {
-            background-color: #4CAF50;
+            background-color: #000;
             color: white;
-            padding: 1rem 0;
+            padding: 2rem 0;
             text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
         }
 
         nav {
-            text-align: center;
-            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem 0;
+            background: rgba(0, 0, 0, 0.8);
         }
 
         nav a {
-            margin: 0 1rem;
             text-decoration: none;
-            color: #4CAF50;
-            font-weight: bold;
+            color: #e0e0e0;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #c49b63;
         }
 
         main {
-            padding: 1rem;
+            padding: 3rem;
+            max-width: 800px;
+            margin: auto;
         }
 
         section {
-            margin-bottom: 2rem;
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 4rem;
+            background: #222;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
         }
 
         h2 {
-            color: #4CAF50;
+            color: #c49b63;
+            font-size: 1.8rem;
+        }
+
+        p, ul li {
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         ul {
@@ -53,39 +72,36 @@
             padding: 0;
         }
 
-        ul li {
-            margin-bottom: 0.5rem;
+        .calculator-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 1.5rem;
+            background-color: #c49b63;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .calculator-link:hover {
+            background-color: #a07c4e;
         }
 
         footer {
             text-align: center;
-            padding: 0.5rem;
-            background-color: #4CAF50;
+            padding: 1rem;
+            background-color: #000;
             color: white;
+            font-size: 0.9rem;
             position: fixed;
             width: 100%;
             bottom: 0;
         }
-
-        .calculator-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-
-        .calculator-link:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Budgeting and Expense Management</h1>
-    </header>
+    <header>Budgeting & Expense Management</header>
 
     <nav>
         <a href="#budgeting-tools">Budgeting Tools</a>
@@ -107,9 +123,8 @@
             <h2>Expense Tracking</h2>
             <p>Track your daily expenses with these tips and tools:</p>
             <ul>
-                <li>Keep receipts and record expenses daily.</li>
-                <li>Use mobile apps like <strong>Mint</strong> or <strong>YNAB</strong> (You Need a Budget).</li>
-                <li>Set alerts for unusual spending patterns.</li>
+                <li>Expense tracking helps monitor spending, manage budgets, and save money efficiently. It involves recording daily expenses, categorizing them, and analyzing spending patterns. Digital apps or spreadsheets simplify tracking and provide insights for better financial decisions. Regular tracking prevents overspending and ensures financial stability..</li>
+            
             </ul>
         </section>
 
