@@ -3,101 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monthly Budget Calculator</title>
+    <title>Budgeting</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: #121212;
+            color: #e0e0e0;
+            text-align: center;
         }
 
         header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
+            background-color: #1e1e1e;
+            padding: 1.5rem 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
-        main {
+        .container {
+            max-width: 500px;
+            margin: 3rem auto;
+            background: #1e1e1e;
             padding: 2rem;
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: #4CAF50;
-            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
         }
 
         label {
             display: block;
             margin: 1rem 0 0.5rem;
+            font-size: 1.1rem;
         }
 
-        input[type="number"] {
+        input {
             width: 100%;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #2c2c2c;
+            color: #e0e0e0;
         }
 
         button {
-            display: block;
             width: 100%;
-            padding: 0.75rem;
-            background-color: #4CAF50;
+            margin-top: 1.5rem;
+            padding: 0.8rem;
+            background: #8e44ad;
             color: white;
             border: none;
-            border-radius: 4px;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
             cursor: pointer;
+            transition: 0.3s;
         }
 
         button:hover {
-            background-color: #45a049;
+            background: #732d91;
         }
 
         .result {
-            margin-top: 1.5rem;
+            margin-top: 2rem;
             padding: 1rem;
-            background-color: #f1f1f1;
-            border-radius: 4px;
-            text-align: center;
             font-size: 1.2rem;
+            background: #292929;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Monthly Budget Calculator</h1>
-    </header>
+    <header>Budgeting</header>
 
-    <main>
-        <h1>Calculate Your Budget</h1>
-        <form id="budget-form">
-            <label for="income">Monthly Income (₹):</label>
-            <input type="number" id="income" placeholder="Enter your income" required>
+    <div class="container">
+        <h2>Monthly Budget Calculator</h2>
+        <label for="income">Enter Monthly Income (₹)</label>
+        <input type="number" id="income" placeholder="Enter your income">
 
-            <label for="needs">Needs (50%) (₹):</label>
-            <input type="number" id="needs" readonly>
+        <label for="needs">Essential Expenses (50%)</label>
+        <input type="text" id="needs" readonly>
 
-            <label for="wants">Wants (30%) (₹):</label>
-            <input type="number" id="wants" readonly>
+        <label for="wants">Lifestyle & Wants (30%)</label>
+        <input type="text" id="wants" readonly>
 
-            <label for="savings">Savings (20%) (₹):</label>
-            <input type="number" id="savings" readonly>
+        <label for="savings">Savings & Investments (20%)</label>
+        <input type="text" id="savings" readonly>
 
-            <button type="button" onclick="calculateBudget()">Calculate</button>
-        </form>
+        <button onclick="calculateBudget()">Calculate Budget</button>
 
         <div id="result" class="result" style="display: none;"></div>
-    </main>
+    </div>
 
     <script>
         function calculateBudget() {
@@ -108,16 +104,12 @@
                 return;
             }
 
-            const needs = (income * 0.5).toFixed(2);
-            const wants = (income * 0.3).toFixed(2);
-            const savings = (income * 0.2).toFixed(2);
-
-            document.getElementById('needs').value = needs;
-            document.getElementById('wants').value = wants;
-            document.getElementById('savings').value = savings;
+            document.getElementById('needs').value = `₹${(income * 0.5).toFixed(2)}`;
+            document.getElementById('wants').value = `₹${(income * 0.3).toFixed(2)}`;
+            document.getElementById('savings').value = `₹${(income * 0.2).toFixed(2)}`;
 
             document.getElementById('result').style.display = 'block';
-            document.getElementById('result').innerText = `Budget Breakdown: Needs: $${needs}, Wants: $${wants}, Savings: $${savings}`;
+            document.getElementById('result').innerText = `Breakdown: Needs: ₹${(income * 0.5).toFixed(2)}, Wants: ₹${(income * 0.3).toFixed(2)}, Savings: ₹${(income * 0.2).toFixed(2)}`;
         }
     </script>
 </body>
