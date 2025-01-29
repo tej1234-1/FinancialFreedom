@@ -6,29 +6,32 @@
     <title>Planning for Retirement</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Merriweather', serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #121212;
+            color: #f4f4f4;
         }
 
         header {
-            background-color: #0056b3;
+            background: url('https://source.unsplash.com/1600x900/?finance,retirement') center/cover no-repeat;
             color: white;
-            padding: 1rem;
             text-align: center;
+            padding: 3rem 1rem;
+            font-size: 2rem;
+            font-weight: bold;
         }
 
         nav {
             text-align: center;
-            margin: 1rem 0;
+            padding: 1rem;
+            background: #1e1e1e;
         }
 
         nav a {
             margin: 0 1rem;
             text-decoration: none;
-            color: #0056b3;
+            color: #4CAF50;
             font-weight: bold;
         }
 
@@ -40,53 +43,36 @@
 
         section {
             margin-bottom: 2rem;
-            background: white;
+            background: #1e1e1e;
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
         }
 
         h2 {
-            color: #0056b3;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul li {
-            margin-bottom: 0.75rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #0056b3;
-            color: white;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            color: #4CAF50;
         }
 
         .highlight {
             font-weight: bold;
-            color: #0056b3;
+            color: #4CAF50;
         }
 
         .calculator-input {
             width: 100%;
             padding: 0.5rem;
             margin-bottom: 1rem;
-            border: 1px solid #ccc;
+            border: none;
             border-radius: 4px;
+            background: #333;
+            color: white;
         }
 
         .calculate-btn {
             display: block;
             width: 100%;
             padding: 0.75rem;
-            background-color: #0056b3;
+            background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 4px;
@@ -95,13 +81,13 @@
         }
 
         .calculate-btn:hover {
-            background-color: #004494;
+            background-color: #45a049;
         }
 
         .result {
             margin-top: 1rem;
             padding: 1rem;
-            background-color: #e7f3ff;
+            background-color: #2e2e2e;
             border-radius: 4px;
             text-align: center;
             font-size: 1.2rem;
@@ -110,7 +96,7 @@
 </head>
 <body>
     <header>
-        <h1>Planning for Retirement</h1>
+        Planning for Retirement
     </header>
 
     <nav>
@@ -152,7 +138,6 @@
 
         <section id="retirement-calculator">
             <h2>Retirement Calculator</h2>
-            <p>Use this calculator to estimate your retirement savings needs:</p>
             <form id="calculator-form">
                 <label for="current-age">Current Age:</label>
                 <input type="number" id="current-age" class="calculator-input" placeholder="Enter your current age" required>
@@ -167,44 +152,12 @@
                 <input type="number" id="monthly-contribution" class="calculator-input" placeholder="Enter your monthly contribution" required>
 
                 <label for="expected-return">Expected Annual Return (%):</label>
-                <input type="number" id="expected-return" class="calculator-input" placeholder="Enter the expected annual return" required>
+                <input type="number" id="expected-return" class="calculator-input" placeholder="Enter expected annual return" required>
 
                 <button type="button" class="calculate-btn" onclick="calculateRetirement()">Calculate</button>
             </form>
-
             <div id="result" class="result" style="display: none;"></div>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2025 Retirement Planning Guide</p>
-    </footer>
-
-    <script>
-        function calculateRetirement() {
-            const currentAge = parseFloat(document.getElementById('current-age').value);
-            const retirementAge = parseFloat(document.getElementById('retirement-age').value);
-            const currentSavings = parseFloat(document.getElementById('current-savings').value);
-            const monthlyContribution = parseFloat(document.getElementById('monthly-contribution').value);
-            const expectedReturn = parseFloat(document.getElementById('expected-return').value) / 100;
-
-            if (isNaN(currentAge) || isNaN(retirementAge) || isNaN(currentSavings) || isNaN(monthlyContribution) || isNaN(expectedReturn)) {
-                alert('Please fill out all fields with valid numbers.');
-                return;
-            }
-
-            const yearsToRetirement = retirementAge - currentAge;
-            const monthsToRetirement = yearsToRetirement * 12;
-            const monthlyRate = expectedReturn / 12;
-
-            let futureSavings = currentSavings * Math.pow(1 + monthlyRate, monthsToRetirement);
-            for (let i = 0; i < monthsToRetirement; i++) {
-                futureSavings += monthlyContribution * Math.pow(1 + monthlyRate, monthsToRetirement - i);
-            }
-
-            document.getElementById('result').style.display = 'block';
-            document.getElementById('result').innerText = `Estimated Retirement Savings: ₹${futureSavings.toFixed(2)}`;
-        }
-    </script>
 </body>
 </html>
