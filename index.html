@@ -43,6 +43,7 @@
       font-size: 4rem;
       line-height: 1.2;
       font-weight: bold;
+      margin: 0;
     }
 
     .hero-description {
@@ -84,10 +85,14 @@
     .sections ul {
       list-style: none;
       padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .sections li {
-      margin: 10px 0;
+      margin: 10px;
+      flex: 1 0 200px;
     }
 
     .sections a {
@@ -113,10 +118,19 @@
       background: rgba(0, 0, 0, 0.5);
     }
 
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar .links {
+      display: flex;
+      gap: 15px;
+    }
+
     .navbar a {
       color: #fff;
       text-decoration: none;
-      margin: 0 15px;
       font-size: 1rem;
     }
 
@@ -140,10 +154,10 @@
       padding: 40px;
       background-color: #f4f4f4;
       color: #333;
+      text-align: center;
     }
 
     .description-section h2 {
-      text-align: center;
       font-size: 2rem;
       margin-bottom: 20px;
     }
@@ -155,82 +169,59 @@
       font-size: 1rem;
     }
 
+    /* Responsive Styles */
+
     /* Mobile Styles */
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.5rem;
-      }
-
-      .hero-description {
-        font-size: 1rem;
-        max-width: 90%;
-      }
-
-      .cta-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-      }
-
+    @media (max-width: 600px) {
       .navbar {
         flex-direction: column;
         align-items: flex-start;
         padding: 10px 15px;
       }
-
       .navbar .links {
+        flex-direction: column;
+        gap: 10px;
         margin-top: 10px;
         width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
       }
-
       .navbar .search {
         margin-top: 10px;
         width: 100%;
       }
-
-      .sections ul {
-        padding: 0;
-        columns: 1;
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .hero-description {
+        font-size: 1rem;
+        max-width: 90%;
+      }
+      .cta-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      .sections {
+        padding: 20px;
+      }
+      .description-section {
+        padding: 20px;
       }
     }
 
     /* Tablet Styles */
-    @media (min-width: 769px) and (max-width: 1024px) {
+    @media (min-width: 601px) and (max-width: 1024px) {
       .hero-title {
         font-size: 3rem;
       }
-
       .hero-description {
         font-size: 1.1rem;
         max-width: 90%;
       }
-
+      .cta-btn {
+        padding: 11px 22px;
+        font-size: 0.95rem;
+      }
       .navbar {
         padding: 12px 20px;
-      }
-
-      .sections ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .sections li {
-        flex: 1 0 45%;
-        margin: 10px;
-      }
-    }
-
-    /* Large Desktop Adjustments */
-    @media (min-width: 1025px) {
-      .hero-title {
-        font-size: 4rem;
-      }
-
-      .hero-description {
-        font-size: 1.2rem;
       }
     }
   </style>
@@ -293,7 +284,7 @@
   <section id="about" class="description-section">
     <h2>About</h2>
     <p>
-      Welcome to our platform, your trusted companion for financial planning. Whether you’re a student managing limited resources or a retiring officer preparing for a secure future, we provide the tools and guidance you need to create personalized budgets. Our mission is to empower users to make informed financial decisions, ensuring stability and peace of mind in every phase of life. From tracking expenses to planning long-term investments, we’re here to help you achieve your financial goals with confidence.
+      Welcome to our platform, your trusted companion for financial planning. Whether you’re a student managing limited resources or a retiring officer preparing for a secure future, we provide the tools and guidance you need to create personalized budgets. Our mission is to empower users to make informed financial decisions, ensuring stability and peace of mind in every phase of life.
     </p>
   </section>
 
