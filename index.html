@@ -1,234 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOUR PATH TO FINANCIAL FREEDOM</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Georgia', serif;
-            color: #fff;
-            background-color: #f4ecd8;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YOUR PATH TO FINANCIAL FREEDOM</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      color: #fff;
+      background-color: #f4ecd8;
+    }
 
-        .hero-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: #000 url('financial_planning.jpg') no-repeat center/cover;
-            position: relative;
-            overflow: hidden;
-        }
+    .hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #000 url('financial_planning.jpg') no-repeat center/cover;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: left;
-            padding: 20px;
-        }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: left;
+      padding: 20px;
+    }
 
-        .hero-title {
-            font-size: 4rem;
-            line-height: 1.2;
-            font-weight: bold;
-        }
+    .hero-title {
+      font-size: 4rem;
+      line-height: 1.2;
+      font-weight: bold;
+    }
 
-        .hero-description {
-            margin-top: 1rem;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            max-width: 600px;
-        }
+    .hero-description {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 600px;
+    }
 
-        .cta-btn {
-            margin-top: 1.5rem;
-            padding: 12px 24px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #000;
-            background-color: #fff;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: background-color 0.3s ease;
-            display: inline-block;
-        }
+    .cta-btn {
+      margin-top: 1.5rem;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #000;
+      background-color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
 
-        .cta-btn:hover {
-            background-color: #e3e3e3;
-        }
+    .cta-btn:hover {
+      background-color: #e3e3e3;
+    }
 
-        .sections {
-            padding: 40px;
-            background-color: #fff;
-            color: #000;
-            text-align: center;
-        }
+    .sections {
+      padding: 40px;
+      background-color: #fff;
+      color: #000;
+      text-align: center;
+    }
 
-        .sections h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
+    .sections h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
 
-        .sections ul {
-            list-style: none;
-            padding: 0;
-        }
+    .sections ul {
+      list-style: none;
+      padding: 0;
+    }
 
-        .sections li {
-            margin: 10px 0;
-        }
+    .sections li {
+      margin: 10px 0;
+    }
 
-        .sections a {
-            color: #4caf50;
-            text-decoration: none;
-            font-size: 1rem;
-        }
+    .sections a {
+      color: #4caf50;
+      text-decoration: none;
+      font-size: 1rem;
+    }
 
-        .sections a:hover {
-            text-decoration: underline;
-        }
+    .sections a:hover {
+      text-decoration: underline;
+    }
 
-        .navbar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 3;
-            background: rgba(0, 0, 0, 0.5);
-        }
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 3;
+      background: rgba(0, 0, 0, 0.5);
+    }
 
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1rem;
-        }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1rem;
+    }
 
-        .navbar .search {
-            border: 1px solid #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            background: none;
-            color: #fff;
-        }
+    .navbar .search {
+      border: 1px solid #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background: none;
+      color: #fff;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #000;
-            color: #fff;
-            margin-top: 40px;
-        }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #000;
+      color: #fff;
+      margin-top: 40px;
+    }
 
-        .description-section {
-            padding: 40px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+    .description-section {
+      padding: 40px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
 
-        .description-section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
+    .description-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
 
-        .description-section p {
-            max-width: 800px;
-            margin: 0 auto 20px;
-            line-height: 1.6;
-            font-size: 1rem;
-        }
-    </style>
+    .description-section p {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+        max-width: 90%;
+      }
+
+      .cta-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+      }
+
+      .navbar .links {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .navbar .search {
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      .sections ul {
+        padding: 0;
+        columns: 1;
+      }
+    }
+
+    /* Tablet Styles */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .hero-description {
+        font-size: 1.1rem;
+        max-width: 90%;
+      }
+
+      .navbar {
+        padding: 12px 20px;
+      }
+
+      .sections ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .sections li {
+        flex: 1 0 45%;
+        margin: 10px;
+      }
+    }
+
+    /* Large Desktop Adjustments */
+    @media (min-width: 1025px) {
+      .hero-title {
+        font-size: 4rem;
+      }
+
+      .hero-description {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">tej</div>
-        <div class="links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <input type="text" class="search" placeholder="Search...">
+  <div class="navbar">
+    <div class="logo">tej</div>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </div>
+    <input type="text" class="search" placeholder="Search..." />
+  </div>
 
-    <div class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">NOW START YOUR OWN BUDGETING</h1>
-            <p class="hero-description">
-This platform helps users plan budgets tailored for students or retiring officers, offering tools to manage their finances effectively. It provides guidance on expenses, savings, and investments to ensure financial security during student life or retirement. Users can customize plans based on their goals and lifestyle preferences.
-            </p>
-            <a href="#" class="cta-btn">Start Budget Planner</a>
-        </div>
+  <div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">NOW START YOUR OWN BUDGETING</h1>
+      <p class="hero-description">
+        This platform helps users plan budgets tailored for students or retiring officers, offering tools to manage their finances effectively. It provides guidance on expenses, savings, and investments to ensure financial security during student life or retirement. Users can customize plans based on their goals and lifestyle preferences.
+      </p>
+      <a href="#" class="cta-btn">Start Budget Planner</a>
     </div>
+  </div>
 
-    <section class="sections">
-        <h2>Explore Financial Topics</h2>
-        <ul>
-            <li><a href="budgeting.html">Budgeting and Expense Management</a></li>
-            <li><a href="savings.html">Savings and Investments</a></li>
-            <li><a href="retirement.html">Retirement Planning</a></li>
-            <li><a href="debt.html">Debt Management</a></li>
-            <li><a href="tax.html">Tax Planning</a></li>
-            <li><a href="goals.html">Financial Goals</a></li>
-            <li><a href="insurance.html">Insurance Planning</a></li>
-            <li><a href="emergency.html">Emergency Financial Preparedness</a></li>
-            <li><a href="education.html">Financial Education</a></li>
-            <li><a href="tools.html">Financial Tools and Resources</a></li>
-            <li><a href="groups.html">Financial Planning for Specific Groups</a></li>
-            <li><a href="news.html">Financial News and Updates</a></li>
-            <li><a href="sustainable.html">Sustainable and Ethical Investing</a></li>
-            <li><a href="advanced.html">Advanced Financial Planning</a></li>
-        </ul>
-    </section>
+  <section class="sections">
+    <h2>Explore Financial Topics</h2>
+    <ul>
+      <li><a href="budgeting.html">Budgeting and Expense Management</a></li>
+      <li><a href="savings.html">Savings and Investments</a></li>
+      <li><a href="retirement.html">Retirement Planning</a></li>
+      <li><a href="debt.html">Debt Management</a></li>
+      <li><a href="tax.html">Tax Planning</a></li>
+      <li><a href="goals.html">Financial Goals</a></li>
+      <li><a href="insurance.html">Insurance Planning</a></li>
+      <li><a href="emergency.html">Emergency Financial Preparedness</a></li>
+      <li><a href="education.html">Financial Education</a></li>
+      <li><a href="tools.html">Financial Tools and Resources</a></li>
+      <li><a href="groups.html">Financial Planning for Specific Groups</a></li>
+      <li><a href="news.html">Financial News and Updates</a></li>
+      <li><a href="sustainable.html">Sustainable and Ethical Investing</a></li>
+      <li><a href="advanced.html">Advanced Financial Planning</a></li>
+    </ul>
+  </section>
 
-    <section id="home" class="description-section">
-        <h2>Home</h2>
-        <p>
-          
-Welcome to Your Budget Planner
-Take control of your finances and plan for a secure future with ease. Whether you're a student balancing expenses or a retiring officer preparing for life’s next chapter, our platform is designed to help you achieve your financial goals.  
+  <section id="home" class="description-section">
+    <h2>Home</h2>
+    <p>
+      Welcome to Your Budget Planner. Take control of your finances and plan for a secure future with ease. Whether you're a student balancing expenses or a retiring officer preparing for life’s next chapter, our platform is designed to help you achieve your financial goals.
+      <br /><br />
+      For Students: Create smart budgets to manage your expenses and savings while focusing on your education.
+      <br />
+      For Retiring Officer: Plan your retirement with confidence by tracking expenses, planning investments, and securing a stable financial future.
+      <br /><br />
+      Get started today and pave the way for a worry-free tomorrow!
+    </p>
+  </section>
 
-For Students: Create smart budgets to manage your expenses and savings while focusing on your education.  
-For Retiring Officer: Plan your retirement with confidence by tracking expenses, planning investments, and securing a stable financial future.  
+  <section id="about" class="description-section">
+    <h2>About</h2>
+    <p>
+      Welcome to our platform, your trusted companion for financial planning. Whether you’re a student managing limited resources or a retiring officer preparing for a secure future, we provide the tools and guidance you need to create personalized budgets. Our mission is to empower users to make informed financial decisions, ensuring stability and peace of mind in every phase of life. From tracking expenses to planning long-term investments, we’re here to help you achieve your financial goals with confidence.
+    </p>
+  </section>
 
-Get started today and pave the way for a worry-free tomorrow!
-        </p>
-    </section>
+  <section id="contact" class="description-section">
+    <h2>Contact</h2>
+    <p>
+      Have questions or need assistance? Reach out to us, and our team will be happy to help you.
+      <br />
+      EMAIL: tejmurari@gmail.com
+    </p>
+  </section>
 
-    <section id="about" class="description-section">
-        <h2>About</h2>
-        <p>
-            Welcome to our platform, your trusted companion for financial planning. Whether you’re a student managing limited resources or a retiring officer preparing for a secure future, we provide the tools and guidance you need to create personalized budgets. Our mission is to empower users to make informed financial decisions, ensuring stability and peace of mind in every phase of life. From tracking expenses to planning long-term investments, we’re here to help you achieve your financial goals with confidence.
-        </p>
-    </section>
-    
-    <section id="contact" class="description-section">
-        <h2>Contact</h2>
-        <p>
-            Have questions or need assistance? Reach out to us, and our team will be happy to help you.
-            EMAIL:tejmurari@gmail.com
-        </p>
-    </section>
-
-    <footer>
-        <p>&copy; @tej</p>
-    </footer>
+  <footer>
+    <p>&copy; @tej</p>
+  </footer>
 </body>
 </html>
