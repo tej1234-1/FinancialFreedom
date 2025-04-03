@@ -5,13 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>YOUR PATH TO FINANCIAL FREEDOM</title>
   <style>
+    /* Base Styles */
     body {
       margin: 0;
       font-family: 'Georgia', serif;
-      color: #fff;
+      color: #333;
       background-color: #f4ecd8;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      line-height: 1.6;
+    }
+    body.loaded {
+      opacity: 1;
+    }
+    html {
+      scroll-behavior: smooth;
     }
 
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+    }
+    .navbar .links {
+      display: flex;
+      gap: 15px;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .navbar .search {
+      border: 1px solid #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background: none;
+      color: #fff;
+    }
+    .navbar button {
+      margin-left: 15px;
+      padding: 5px 10px;
+      background: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .navbar button:hover {
+      background: #e3e3e3;
+    }
+
+    /* Hero Section */
     .hero-section {
       display: flex;
       align-items: center;
@@ -20,8 +79,9 @@
       background: #000 url('financial_planning.jpg') no-repeat center/cover;
       position: relative;
       overflow: hidden;
+      color: #fff;
+      text-align: center;
     }
-
     .hero-overlay {
       position: absolute;
       top: 0;
@@ -31,30 +91,24 @@
       background: rgba(0, 0, 0, 0.6);
       z-index: 1;
     }
-
     .hero-content {
       position: relative;
       z-index: 2;
-      text-align: left;
       padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
-
     .hero-title {
-      font-size: 4rem;
+      font-size: 3.5rem;
       line-height: 1.2;
       font-weight: bold;
-      margin: 0;
+      margin: 0 0 20px;
     }
-
     .hero-description {
-      margin-top: 1rem;
       font-size: 1.2rem;
-      line-height: 1.6;
-      max-width: 600px;
+      margin-bottom: 30px;
     }
-
     .cta-btn {
-      margin-top: 1.5rem;
       padding: 12px 24px;
       font-size: 1rem;
       font-weight: bold;
@@ -62,169 +116,167 @@
       background-color: #fff;
       text-decoration: none;
       border-radius: 25px;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.3s ease;
       display: inline-block;
+      margin: 5px;
     }
-
     .cta-btn:hover {
       background-color: #e3e3e3;
+      transform: scale(1.05);
     }
 
-    .sections {
-      padding: 40px;
+    /* Budgeting Content Section */
+    .budget-section {
+      padding: 60px 20px;
       background-color: #fff;
-      color: #000;
+      color: #333;
       text-align: center;
     }
-
-    .sections h2 {
-      font-size: 2rem;
+    .budget-section h2 {
+      font-size: 2.5rem;
       margin-bottom: 20px;
     }
-
-    .sections ul {
+    .budget-section p {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
+    }
+    .budget-topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      max-width: 1000px;
+      margin: 0 auto;
       list-style: none;
       padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
     }
-
-    .sections li {
-      margin: 10px;
-      flex: 1 0 200px;
-    }
-
-    .sections a {
-      color: #4caf50;
-      text-decoration: none;
-      font-size: 1rem;
-    }
-
-    .sections a:hover {
-      text-decoration: underline;
-    }
-
-    .navbar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 3;
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .navbar .logo {
-      font-size: 1.5rem;
+    .budget-topics li {
+      background: #f8f8f8;
+      padding: 15px;
+      border-radius: 8px;
       font-weight: bold;
+      transition: transform 0.3s ease;
     }
-
-    .navbar .links {
-      display: flex;
-      gap: 15px;
+    .budget-topics li:hover {
+      transform: translateY(-3px);
     }
-
-    .navbar a {
-      color: #fff;
+    .budget-topics a {
+      color: inherit;
       text-decoration: none;
-      font-size: 1rem;
+      display: block;
     }
 
-    .navbar .search {
-      border: 1px solid #fff;
-      padding: 5px 10px;
-      border-radius: 5px;
-      background: none;
-      color: #fff;
+    /* About Section */
+    .description-section {
+      padding: 60px 20px;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+    }
+    .description-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .description-section p {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
     }
 
+    /* Contact Section */
+    .contact-section {
+      padding: 60px 20px;
+      background-color: #fff;
+      color: #333;
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .contact-section p {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .contact-section a {
+      color: #2c7a2f;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    /* Parallax Section */
+    .parallax {
+      background-image: url('financial_planning.jpg');
+      height: 80vh;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Glassmorphism Effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+      margin: 40px auto;
+      max-width: 1000px;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
       padding: 20px;
       background-color: #000;
       color: #fff;
-      margin-top: 40px;
     }
 
-    .description-section {
-      padding: 40px;
-      background-color: #f4f4f4;
-      color: #333;
-      text-align: center;
+    /* Dark Mode */
+    .dark-mode {
+      background-color: #121212;
+      color: #fff;
+      transition: background 0.5s, color 0.5s;
+    }
+    .dark-mode .navbar,
+    .dark-mode footer {
+      background-color: #000;
+    }
+    .dark-mode .cta-btn {
+      background-color: #fff;
+      color: #000;
     }
 
-    .description-section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    .description-section p {
-      max-width: 800px;
-      margin: 0 auto 20px;
-      line-height: 1.6;
-      font-size: 1rem;
-    }
-
-    /* Responsive Styles */
-
-    /* Mobile Styles */
+    /* Responsive Adjustments */
     @media (max-width: 600px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .hero-description {
+        font-size: 1rem;
+      }
       .navbar {
         flex-direction: column;
         align-items: flex-start;
         padding: 10px 15px;
       }
       .navbar .links {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
-        width: 100%;
+        display: none;
       }
       .navbar .search {
-        margin-top: 10px;
         width: 100%;
-      }
-      .hero-title {
-        font-size: 2.5rem;
-      }
-      .hero-description {
-        font-size: 1rem;
-        max-width: 90%;
-      }
-      .cta-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-      }
-      .sections {
-        padding: 20px;
-      }
-      .description-section {
-        padding: 20px;
+        margin-top: 10px;
       }
     }
-
-    /* Tablet Styles */
     @media (min-width: 601px) and (max-width: 1024px) {
       .hero-title {
         font-size: 3rem;
       }
-      .hero-description {
-        font-size: 1.1rem;
-        max-width: 90%;
-      }
-      .cta-btn {
-        padding: 11px 22px;
-        font-size: 0.95rem;
-      }
-      .navbar {
-        padding: 12px 20px;
-      }
     }
   </style>
+  <!-- GSAP Library for Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
 </head>
 <body>
   <div class="navbar">
@@ -233,24 +285,32 @@
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
+      <a href="#budget">Budget Planner</a>
     </div>
     <input type="text" class="search" placeholder="Search..." />
+    <button id="darkModeToggle">Toggle Dark Mode</button>
   </div>
 
-  <div class="hero-section">
+  <!-- Hero Section with Typing and GSAP Animation -->
+  <section class="hero-section" id="home">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1 class="hero-title">NOW START YOUR OWN BUDGETING</h1>
+      <h1 class="hero-title" id="typing-text"></h1>
       <p class="hero-description">
-        This platform helps users plan budgets tailored for students or retiring officers, offering tools to manage their finances effectively. It provides guidance on expenses, savings, and investments to ensure financial security during student life or retirement. Users can customize plans based on their goals and lifestyle preferences.
+        Welcome to Your Budget Planner. Take control of your finances and plan for a secure future with ease.
       </p>
-      <a href="#" class="cta-btn">Start Budget Planner</a>
+      <a href="#budget" class="cta-btn">Start Budget Planner</a>
+      <a href="#about" class="cta-btn">Explore Financial Topics</a>
     </div>
-  </div>
+  </section>
 
-  <section class="sections">
-    <h2>Explore Financial Topics</h2>
-    <ul>
+  <!-- Budget Planner Section -->
+  <section class="budget-section" id="budget">
+    <h2>NOW START YOUR OWN BUDGETING</h2>
+    <p>
+      This platform helps users plan budgets tailored for students or retiring officers, offering tools to manage their finances effectively. It provides guidance on expenses, savings, and investments to ensure financial security during student life or retirement. Users can customize plans based on their goals and lifestyle preferences.
+    </p>
+    <ul class="budget-topics">
       <li><a href="budgeting.html">Budgeting and Expense Management</a></li>
       <li><a href="savings.html">Savings and Investments</a></li>
       <li><a href="retirement.html">Retirement Planning</a></li>
@@ -266,39 +326,67 @@
       <li><a href="sustainable.html">Sustainable and Ethical Investing</a></li>
       <li><a href="advanced.html">Advanced Financial Planning</a></li>
     </ul>
+    <a href="#budget" class="cta-btn">Start Budget Planner</a>
   </section>
 
-  <section id="home" class="description-section">
-    <h2>Home</h2>
+  <!-- Parallax Section -->
+  <section class="parallax"></section>
+
+  <!-- Glassmorphism Section (Optional Additional Content) -->
+  <section class="glass">
+    <h2>Plan. Save. Invest.</h2>
     <p>
-      Welcome to Your Budget Planner. Take control of your finances and plan for a secure future with ease. Whether you're a student balancing expenses or a retiring officer preparing for life’s next chapter, our platform is designed to help you achieve your financial goals.
-      <br /><br />
-      For Students: Create smart budgets to manage your expenses and savings while focusing on your education.
-      <br />
-      For Retiring Officer: Plan your retirement with confidence by tracking expenses, planning investments, and securing a stable financial future.
-      <br /><br />
-      Get started today and pave the way for a worry-free tomorrow!
+      Whether you’re a student managing limited resources or a retiring officer preparing for a secure future, our platform offers tailored advice and planning tools. Empower yourself with smart budgeting and financial planning.
     </p>
   </section>
 
-  <section id="about" class="description-section">
+  <!-- About Section -->
+  <section class="description-section" id="about">
     <h2>About</h2>
     <p>
       Welcome to our platform, your trusted companion for financial planning. Whether you’re a student managing limited resources or a retiring officer preparing for a secure future, we provide the tools and guidance you need to create personalized budgets. Our mission is to empower users to make informed financial decisions, ensuring stability and peace of mind in every phase of life.
     </p>
   </section>
 
-  <section id="contact" class="description-section">
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
     <h2>Contact</h2>
+    <p>Have questions or need assistance? Reach out to us and our team will be happy to help you.</p>
     <p>
-      Have questions or need assistance? Reach out to us, and our team will be happy to help you.
-      <br />
-      EMAIL: tejmurari@gmail.com
+      EMAIL: <a href="mailto:tejmurari@gmail.com">tejmurari@gmail.com</a>
     </p>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; @tej</p>
+    <p>&copy; 2025 YOUR PATH TO FINANCIAL FREEDOM. All rights reserved.</p>
   </footer>
+
+  <!-- JavaScript for Effects -->
+  <script>
+    // Smooth Page Transition: Add 'loaded' class on page load
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+      // GSAP Page Load Animation for hero content
+      gsap.from(".hero-content", { opacity: 0, y: 50, duration: 1 });
+    });
+
+    // Text Animation (Typing Effect)
+    const text = "YOUR PATH TO FINANCIAL FREEDOM";
+    let i = 0;
+    function typeEffect() {
+      if (i < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 100);
+      }
+    }
+    window.addEventListener("load", typeEffect);
+
+    // Dark Mode Toggle
+    document.getElementById("darkModeToggle").addEventListener("click", function() {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
 </body>
 </html>
