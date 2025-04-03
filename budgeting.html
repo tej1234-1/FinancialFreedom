@@ -1,147 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budgeting and Expense Management</title>
-    <style>
-        body {
-            font-family: 'Georgia', serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-        }
-
-        header {
-            background-color: #000;
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            padding: 1rem 0;
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #e0e0e0;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #c49b63;
-        }
-
-        main {
-            padding: 3rem;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        section {
-            margin-bottom: 4rem;
-            background: #222;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-        }
-
-        h2 {
-            color: #c49b63;
-            font-size: 1.8rem;
-        }
-
-        p, ul li {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .calculator-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.7rem 1.5rem;
-            background-color: #c49b63;
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
-
-        .calculator-link:hover {
-            background-color: #a07c4e;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #000;
-            color: white;
-            font-size: 0.9rem;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budgeting and Expense Management</title>
+  <!-- GSAP Library for Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <style>
+    /* Smooth Scroll Effect */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Smooth Page Transitions */
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      background-color: #202124;
+      color: #e8eaed;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+    body.loaded {
+      opacity: 1;
+    }
+    
+    /* Dark Mode (default is dark; toggle can adjust some colors if needed) */
+    .dark-mode {
+      background-color: #202124;
+      color: #e8eaed;
+    }
+    
+    header {
+      background-color: #292a2d;
+      color: #e8eaed;
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      /* Glassmorphism effect on header */
+      background: rgba(41, 42, 45, 0.9);
+      backdrop-filter: blur(5px);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+      background: rgba(41, 42, 45, 0.9);
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: #e8eaed;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: #c49b63;
+    }
+    
+    /* Enhanced Dark Mode Toggle Button in Nav */
+    nav button {
+      padding: 0.5rem 1rem;
+      background: #c49b63;
+      color: #202124;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    
+    nav button:hover {
+      background: #a07c4e;
+      transform: scale(1.05);
+    }
+    
+    main {
+      padding: 3rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    
+    section {
+      margin-bottom: 4rem;
+      background: #303134;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(232, 234, 237, 0.1);
+    }
+    
+    /* Remove extra space below the 50/30/20 Rule section */
+    #rule-50-30-20 {
+      margin-bottom: 0;
+    }
+    
+    h2 {
+      color: #c49b63;
+      font-size: 1.8rem;
+    }
+    
+    p, ul li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .calculator-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      background-color: #c49b63;
+      color: #202124;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 6px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    
+    .calculator-link:hover {
+      background-color: #a07c4e;
+      transform: scale(1.05);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #292a2d;
+      color: #e8eaed;
+      font-size: 0.9rem;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+    
+    /* Parallax Section */
+    .parallax {
+      background-image: url('https://via.placeholder.com/1920x1080');
+      height: 300px;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 4rem;
+    }
+  </style>
 </head>
 <body>
-    <header>Budgeting & Expense Management</header>
+  <header id="header-title"></header>
 
-    <nav>
-        <a href="#budgeting-tools">Budgeting Tools</a>
-        <a href="#expense-tracking">Expense Tracking</a>
-        <a href="#rule-50-30-20">50/30/20 Rule</a>
-    </nav>
+  <nav>
+      <a href="#budgeting-tools">Budgeting Tools</a>
+      <a href="#expense-tracking">Expense Tracking</a>
+      <a href="#rule-50-30-20">50/30/20 Rule</a>
+      <!-- Dark Mode Toggle Button -->
+      <button id="darkModeToggle">Toggle Dark Mode</button>
+  </nav>
 
-    <main>
-        <section id="budgeting-tools">
-            <h2>Budgeting Tools</h2>
-            <p>Use our handy tools and templates to manage your monthly budget effectively:</p>
-            <ul>
-                <li><a class="calculator-link" href="budget-calculator.html">Monthly Budget Calculator</a></li>
-                <li><a class="calculator-link" href="budget-template.pdf" download>Download Budget Template</a></li>
-            </ul>
-        </section>
+  <main>
+    <section id="budgeting-tools">
+      <h2>Budgeting Tools</h2>
+      <p>Use our handy tools and templates to manage your monthly budget effectively:</p>
+      <ul>
+        <li><a class="calculator-link" href="budget-calculator.html">Monthly Budget Calculator</a></li>
+        <li><a class="calculator-link" href="budget-template.pdf" download>Download Budget Template</a></li>
+      </ul>
+    </section>
 
-        <section id="expense-tracking">
-            <h2>Expense Tracking</h2>
-            <p>Track your daily expenses with these tips and tools:</p>
-            <ul>
-                <li>Expense tracking helps monitor spending, manage budgets, and save money efficiently. It involves recording daily expenses, categorizing them, and analyzing spending patterns. Digital apps or spreadsheets simplify tracking and provide insights for better financial decisions. Regular tracking prevents overspending and ensures financial stability..</li>
-            
-            </ul>
-        </section>
+    <section id="expense-tracking">
+      <h2>Expense Tracking</h2>
+      <p>Track your daily expenses with these tips and tools:</p>
+      <ul>
+        <li>Expense tracking helps monitor spending, manage budgets, and save money efficiently. It involves recording daily expenses, categorizing them, and analyzing spending patterns. Digital apps or spreadsheets simplify tracking and provide insights for better financial decisions. Regular tracking prevents overspending and ensures financial stability.</li>
+      </ul>
+    </section>
 
-        <section id="rule-50-30-20">
-            <h2>50/30/20 Rule</h2>
-            <p>This simple budgeting method divides your income into three categories:</p>
-            <ul>
-                <li><strong>50% Needs:</strong> Essential expenses like rent, groceries, and utilities.</li>
-                <li><strong>30% Wants:</strong> Discretionary spending like entertainment and dining out.</li>
-                <li><strong>20% Savings:</strong> Savings, investments, and debt repayment.</li>
-            </ul>
-            <p>Adjust these percentages as needed to suit your financial goals.</p>
-        </section>
-    </main>
+    <section id="rule-50-30-20">
+      <h2>50/30/20 Rule</h2>
+      <p>This simple budgeting method divides your income into three categories:</p>
+      <ul>
+        <li><strong>50% Needs:</strong> Essential expenses like rent, groceries, and utilities.</li>
+        <li><strong>30% Wants:</strong> Discretionary spending like entertainment and dining out.</li>
+        <li><strong>20% Savings:</strong> Savings, investments, and debt repayment.</li>
+      </ul>
+      <p>Adjust these percentages as needed to suit your financial goals.</p>
+    </section>
+    
+    <!-- Parallax Section -->
+    <div class="parallax"></div>
+  </main>
 
-    <footer>
-        <p>&copy; 2025 Budgeting and Expense Management</p>
-    </footer>
+  <footer>
+      <p>&copy; 2025 Budgeting and Expense Management</p>
+  </footer>
+
+  <!-- JavaScript for Effects -->
+  <script>
+    // Smooth Page Transition
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+      // GSAP Animation: animate main content
+      gsap.from("main", { opacity: 0, y: 30, duration: 1 });
+    });
+    
+    // Text Animation (Typing Effect) for header title
+    const headerText = "Budgeting & Expense Management";
+    let idx = 0;
+    function typeHeader() {
+      if (idx < headerText.length) {
+        document.getElementById("header-title").innerHTML += headerText.charAt(idx);
+        idx++;
+        setTimeout(typeHeader, 100);
+      }
+    }
+    window.addEventListener("load", typeHeader);
+    
+    // Dark Mode Toggle
+    document.getElementById("darkModeToggle").addEventListener("click", function() {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
 </body>
 </html>
